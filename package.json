@@ -1,0 +1,44 @@
+{
+  "name": "@eazyautodelete/misc-commands",
+  "version": "1.0.0",
+  "description": "🌌 Misc commands",
+  "main": "src/MiscCommands.js",
+  "scripts": {
+    "format": "npx prettier --write .",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EazyAutodelete/misc-commands.git"
+  },
+  "author": {
+    "name": "qreepex",
+    "email": "dev@qreepex.xyz",
+    "url": "https://qreepex.xyz"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EazyAutodelete/misc-commands/issues"
+  },
+  "homepage": "https://github.com/EazyAutodelete/misc-commands#readme",
+  "devDependencies": {
+    "@types/node": "^18.7.16",
+    "@typescript-eslint/eslint-plugin": "^5.36.2",
+    "@typescript-eslint/parser": "^5.36.2",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.23.0",
+    "husky": "^8.0.1",
+    "prettier": "^2.7.1"
+  },
+  "dependencies": {
+    "@eazyautodelete/commands-support": "^1.1.5",
+    "@eazyautodelete/core": "^3.2.9",
+    "discord.js": "^13.10.3",
+    "typescript": "^4.8.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
