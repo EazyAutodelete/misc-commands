@@ -1,6 +1,6 @@
 {
   "name": "@eazyautodelete/misc-commands",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "🌌 Misc commands",
   "main": "src/MiscCommands.js",
   "scripts": {
@@ -40,5 +40,9 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://npm.pkg.github.com/"
   }
 }

@@ -13,8 +13,6 @@ class InviteCommand extends Command {
 
   async run(message: CommandMessage, args: CommandArgs) {
     const ping = await message.send(this.embed.setDescription("Pinging..."), true);
-    console.log(Date.now(), message.message.createdTimestamp);
-    console.log(Date.now() > message.message.createdTimestamp);
     await ping.edit({
       embeds: [
         this.embed
@@ -24,12 +22,20 @@ class InviteCommand extends Command {
             }`,
           })
           .setTitle(":ping_pong: Pong!")
-          .setDescription(
-            message.translate(
-              "ping",
-              (Date.now() - message.message.createdTimestamp).toString(),
-              this.bot.client.ws.ping.toString()
-            )
+          .addFields(
+            { name: ":satellite: API Latency", value: `${this.bot.client.ws.ping}ms`, inline: true },
+            {
+              name: ":stopwatch: Bot Latency",
+              value: `${Date.now() - message.message.createdTimestamp}ms`,
+              inline: true,
+            },
+            {
+              name: ":hourglass_flowing_sand: Uptime",
+              value: `<t:${Math.floor(this.bot.client.readyTimestamp! / 1000)}:f> | <t:${Math.floor(
+                this.bot.client.readyTimestamp! / 1000
+              )}:R>`,
+              inline: false,
+            }
           ),
       ],
     });
