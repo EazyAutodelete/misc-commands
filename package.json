@@ -5,7 +5,8 @@
   "main": "src/MiscCommands.js",
   "scripts": {
     "format": "npx prettier --write .",
-    "build": "tsc"
+    "build": "tsc",
+    "module:build": "tsc"
   },
   "repository": {
     "type": "git",
