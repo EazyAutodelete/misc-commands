@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@eazyautodelete/commands-support": "^1.1.5",
-    "@eazyautodelete/core": "^3.2.9",
+    "@eazyautodelete/core": "^3.3.4",
     "discord.js": "^13.10.3",
     "typescript": "^4.8.3"
   },

@@ -54,12 +54,11 @@ class LanguageCommand extends Command {
         .setDescription(message.translate("languageEdit", this.bot.Translator.getLanguageName(language)!))
         .setFooter({ text: message.translate("languageEditFooter"), iconURL: this.client.user?.displayAvatarURL() });
 
-      await message.send(
+      return void (await message.send(
         languageEditEmbed,
         true,
         this.urlButton("https://eazyautodelete.xyz/translate", "Become a translator")
-      );
-      return;
+      ));
     } else {
       const languageShowEmbed = this.embed
         .setDescription(
