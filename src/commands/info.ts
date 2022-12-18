@@ -25,7 +25,7 @@ class InfoCommand extends Command {
       },
     };
 
-    const data: { status: string; id: number; cluster: number }[][] = await this.bot.cluster.broadcastEval(
+    const shardData: { status: string; id: number; cluster: number }[][] = await this.bot.cluster.broadcastEval(
       "this.shards.map(x => { return { status: x.status, id: x.id, cluster: this.cluster.id } })"
     );
 
@@ -47,17 +47,23 @@ class InfoCommand extends Command {
       },
       {
         name: ":tools: Servers",
-        value: "```" + this.client.guilds.size + "```",
+        value: "```" + (await this.bot.cluster.fetchClientValues("guilds.size")).reduce((a, b) => a + b, 0) + "```",
         inline: true,
       },
       {
         name: ":busts_in_silhouette: Members",
-        value: "```" + this.client.guilds.map(g => g.memberCount).reduce((a: number, b: number) => a + b, 0) + "```",
+        value: "```" + (await this.bot.cluster.fetchClientValues("users.size")).reduce((a, b) => a + b, 0) + "```",
         inline: true,
       },
       {
         name: "<:channel:1026072967794413580> Channels",
-        value: "```" + Object.keys(this.client.channelGuildMap).length + "```",
+        value:
+          "```" +
+          (await this.bot.cluster.broadcastEval("Object.keys(this.channelGuildMap).length")).reduce(
+            (a, b) => a + b,
+            0
+          ) +
+          "```",
         inline: true,
       },
       {
@@ -73,13 +79,13 @@ class InfoCommand extends Command {
             this.client.shards.filter(x => x.status === "ready" || x.status === "resuming").length
           }` +
           `\n` +
-          `All Clusters: ${data.map(x => x.length).reduce((a, b) => a + b, 0)}` +
+          `All Clusters: ${shardData.map(x => x.length).reduce((a, b) => a + b, 0)}` +
           `   ` +
-          `Online: ${data.map(x => x.filter(y => y.status === "ready").length).reduce((a, b) => a + b, 0)}` +
+          `Online: ${shardData.map(x => x.filter(y => y.status === "ready").length).reduce((a, b) => a + b, 0)}` +
           `   ` +
           `Offline: ${
-            data.map(x => x.length).reduce((a, b) => a + b, 0) -
-            data
+            shardData.map(x => x.length).reduce((a, b) => a + b, 0) -
+            shardData
               .map(x => x.filter(y => y.status === "ready" || y.status === "resuming").length)
               .reduce((a, b) => a + b, 0)
           }` +
