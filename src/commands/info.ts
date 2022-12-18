@@ -64,7 +64,7 @@ class InfoCommand extends Command {
         name: ":computer: Shards",
         value:
           `\`\`\`\n` +
-          `On this cluster: ${this.client.shards.size}` +
+          `This Cluster: ${this.client.shards.size}` +
           `   ` +
           `Online: ${this.client.shards.filter(x => x.status === "ready" || x.status === "resuming").length}` +
           `   ` +
@@ -73,7 +73,7 @@ class InfoCommand extends Command {
             this.client.shards.filter(x => x.status === "ready" || x.status === "resuming").length
           }` +
           `\n` +
-          `Total: ${data.map(x => x.length).reduce((a, b) => a + b, 0)}` +
+          `All Clusters: ${data.map(x => x.length).reduce((a, b) => a + b, 0)}` +
           `   ` +
           `Online: ${data.map(x => x.filter(y => y.status === "ready").length).reduce((a, b) => a + b, 0)}` +
           `   ` +

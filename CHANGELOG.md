@@ -4,10 +4,9 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [1.2.4](https://github.com/EazyAutodelete/misc-commands/compare/v1.2.3...v1.2.4) (2022-12-18)
 
-
 ### Bug Fixes
 
-* **info:** fix shard stats ([41987f3](https://github.com/EazyAutodelete/misc-commands/commit/41987f32504a3a2434d9293f828134b909a41d37))
+- **info:** fix shard stats ([41987f3](https://github.com/EazyAutodelete/misc-commands/commit/41987f32504a3a2434d9293f828134b909a41d37))
 
 ### [1.2.3](https://github.com/EazyAutodelete/misc-commands/compare/v1.2.2...v1.2.3) (2022-12-18)
 
