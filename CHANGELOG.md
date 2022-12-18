@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.2](https://github.com/EazyAutodelete/misc-commands/compare/v1.2.0...v1.2.2) (2022-12-18)
+
+
+### Bug Fixes
+
+* **ping:** dont edit ping message ([17da241](https://github.com/EazyAutodelete/misc-commands/commit/17da2413c6a111f1a1ea555abaa13f6d3a50e634))
+
 ## 1.2.0 (2022-12-18)
 
 ### Features
