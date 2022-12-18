@@ -1,4 +1,4 @@
-import { Bot, Command, CommandArgs, CommandMessage } from "@eazyautodelete/core";
+import { Bot, Command, CommandMessageArgs, CommandMessage } from "@eazyautodelete/core";
 
 class InviteCommand extends Command {
   constructor(bot: Bot) {
@@ -11,18 +11,28 @@ class InviteCommand extends Command {
     this.usage = "status";
   }
 
-  async run(message: CommandMessage, args: CommandArgs) {
+  async run(message: CommandMessage, args: CommandMessageArgs) {
     message.send(
-      this.embed
-        .setTitle(":rotating_light: Status")
-        .setDescription(
-          message.translate("status", "https://status.eazyautodelete.xyz/", "https://eazyautodelete.xyz/discord")
+      {
+        ...this.embed,
+        title: ":rotating_light: Status",
+        description: message.translate(
+          "status",
+          "https://status.eazyautodelete.xyz/",
+          "https://eazyautodelete.xyz/discord"
         ),
+      },
       true,
-      this.urlButton("https://status.eazyautodelete.xyz/", "Status Page", "🚨").addComponents(
-        this.urlButton("https://eazyautodelete.xyz/discord", "Discord Server").components[0],
-        this.urlButton("https://eazyautodelete.xyz/invite", "Invite").components[0]
-      )
+      [
+        {
+          type: 1,
+          components: [
+            this.urlButton("https://status.eazyautodelete.xyz/", "Status Page", "🚨")[0].components[0],
+            this.urlButton("https://eazyautodelete.xyz/discord", "Discord Server")[0].components[0],
+            this.urlButton("https://eazyautodelete.xyz/invite", "Invite")[0].components[0],
+          ],
+        },
+      ]
     );
   }
 }

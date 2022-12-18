@@ -1,12 +1,13 @@
 {
   "name": "@eazyautodelete/misc-commands",
-  "version": "1.0.2",
+  "version": "1.1.1",
   "description": "🌌 Misc commands",
   "main": "src/MiscCommands.js",
   "scripts": {
     "format": "npx prettier --write .",
     "build": "tsc",
-    "module:build": "tsc"
+    "module:build": "tsc src/**.ts src/commands/**.ts --skipLibCheck true --skipDefaultLibCheck true",
+    "postinstall": "npm run module:build"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,15 @@
     "email": "dev@qreepex.xyz",
     "url": "https://qreepex.xyz"
   },
+  "files": [
+    "src/*.js",
+    "src/**/*.js",
+    "src/*.ts",
+    "src/**/*.ts",
+    "src/*.txt",
+    "src/**/*.txt",
+    "tsconfig.json"
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/EazyAutodelete/misc-commands/issues"
@@ -32,18 +42,18 @@
     "prettier": "^2.7.1"
   },
   "dependencies": {
-    "@eazyautodelete/commands-support": "^1.1.5",
-    "@eazyautodelete/core": "^3.3.4",
-    "discord.js": "^13.10.3",
+    "@eazyautodelete/commands-support": "^1.4.15",
+    "@eazyautodelete/core": "^4.1.11",
+    "eris": "github:EazyAutodelete/eris",
     "typescript": "^4.8.3"
+  },
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://npm.pkg.github.com/"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  },
-  "publishConfig": {
-    "access": "restricted",
-    "registry": "https://npm.pkg.github.com/"
   }
 }

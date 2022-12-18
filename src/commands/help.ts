@@ -1,6 +1,4 @@
-import { Bot, Command, CommandArgs, CommandMessage } from "@eazyautodelete/core";
-import { Cipher } from "crypto";
-import { ApplicationCommandOptionChoiceData, MessageActionRow } from "discord.js";
+import { Bot, Command, CommandMessageArgs, CommandMessage } from "@eazyautodelete/core";
 
 class HelpCommand extends Command {
   constructor(bot: Bot) {
@@ -22,30 +20,36 @@ class HelpCommand extends Command {
     ];
   }
 
-  async run(message: CommandMessage, args: CommandArgs): Promise<void> {
+  async run(message: CommandMessage, args: CommandMessageArgs): Promise<void> {
     const commandName = args.consume("command");
 
     if (!commandName) {
-      const helpEmbed = this.embed
-        .setDescription(
-          message.translate("overview") +
+      await message.send(
+        {
+          ...this.embed,
+          description:
+            message.translate("overview") +
             "\n\n" +
             this.bot.commands
               .filter((c: Command) => c.permissionLevel != "botMod" && c.permissionLevel != "botAdmin")
               .map((x: Command) => `**/${x.name}**:\n\\↪ ${x.description}`)
-              .join("\n\n")
-        )
-        .setTitle("**EazyAutodelete:** Help");
-
-      const helpButtons = new MessageActionRow().addComponents([
-        this.urlButton("https://eazyautodelete.xyz/discord", "Support Server", "<:discord:985860686963937320>")
-          .components[0],
-        this.urlButton("https://eazyautodelete.xyz", "Website", "🌐").components[0],
-        this.urlButton("https://status.eazyautodelete.xyz", "Status Page", "📣").components[0],
-        this.urlButton("https://docs.eazyautodelete.xyz", "Documentation", "📖").components[0],
-      ]);
-
-      await message.send(helpEmbed, true, helpButtons);
+              .join("\n\n"),
+          title: "**EazyAutodelete:** Help",
+        },
+        true,
+        [
+          {
+            type: 1,
+            components: [
+              this.urlButton("https://eazyautodelete.xyz/discord", "Support Server", "<:discord:985860686963937320>")[0]
+                .components[0],
+              this.urlButton("https://eazyautodelete.xyz", "Website", "🌐")[0].components[0],
+              this.urlButton("https://status.eazyautodelete.xyz", "Status Page", "📣")[0].components[0],
+              this.urlButton("https://docs.eazyautodelete.xyz", "Documentation", "📖")[0].components[0],
+            ],
+          },
+        ]
+      );
       return;
     } else if (commandName) {
       const command = this.bot.commands.get(commandName);
@@ -54,21 +58,21 @@ class HelpCommand extends Command {
         return;
       }
 
-      const cmdHelpEmbed = this.embed
-        .setTitle("Command: **/" + command.name + "**")
-        .setDescription(command.description)
-        .addFields([
-          {
-            name: "**" + message.translate("usage") + "**",
-            value: "```\n/" + command.usage + "```",
-            inline: false,
-          },
-          {
-            name: "**" + message.translate("example") + "**",
-            value: "```\n" + command.examples.map((x: string) => `/${x}`).join("\n") + "```",
-            inline: false,
-          },
-        ]);
+      const cmdHelpEmbed = this.embed;
+      cmdHelpEmbed.title = "Command: **/" + command.name + "**";
+      cmdHelpEmbed.description = command.description;
+      cmdHelpEmbed.fields = [
+        {
+          name: "**" + message.translate("usage") + "**",
+          value: "```\n/" + command.usage + "```",
+          inline: false,
+        },
+        {
+          name: "**" + message.translate("example") + "**",
+          value: "```\n" + command.examples.map((x: string) => `/${x}`).join("\n") + "```",
+          inline: false,
+        },
+      ];
 
       await message.send(cmdHelpEmbed, true);
       return;
@@ -76,7 +80,7 @@ class HelpCommand extends Command {
   }
 
   async autocompleteHandler(query: string) {
-    const queries: ApplicationCommandOptionChoiceData[] = [];
+    const queries: { name: string; value: string }[] = [];
     const commands = this.bot.commands;
 
     commands

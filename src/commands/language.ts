@@ -1,5 +1,4 @@
-import { CommandArgs, Bot, Command, CommandMessage } from "@eazyautodelete/core";
-import { ApplicationCommandAutocompleteOption, ApplicationCommandOptionChoiceData } from "discord.js";
+import { CommandMessageArgs, Bot, Command, CommandMessage } from "@eazyautodelete/core";
 
 class LanguageCommand extends Command {
   constructor(client: Bot) {
@@ -28,7 +27,7 @@ class LanguageCommand extends Command {
     ];
   }
 
-  async run(message: CommandMessage, args: CommandArgs) {
+  async run(message: CommandMessage, args: CommandMessageArgs) {
     const language = args.consume("new_language");
 
     if (language) {
@@ -43,30 +42,36 @@ class LanguageCommand extends Command {
         return;
       }
 
-      const data = await this.bot.db.updateUserSettings(message.author.id, {
+      const data = await this.bot.db.updateUserSettings(message.user.id, {
         lang: language,
       });
 
       message.data.user.language = data.language;
 
-      const languageEditEmbed = this.embed
-        .setTitle("**Language:** " + message.author.tag)
-        .setDescription(message.translate("languageEdit", this.bot.Translator.getLanguageName(language)!))
-        .setFooter({ text: message.translate("languageEditFooter"), iconURL: this.client.user?.displayAvatarURL() });
-
-      return void (await message.send(
-        languageEditEmbed,
+      await message.send(
+        {
+          ...this.embed,
+          title: "**Language:** " + message.user.username + "#" + message.user.discriminator,
+          description: message.translate("languageEdit", this.bot.Translator.getLanguageName(language)!),
+          footer: { text: message.translate("languageEditFooter"), icon_url: this.client.user.avatarURL },
+        },
         true,
         this.urlButton("https://eazyautodelete.xyz/translate", "Become a translator")
-      ));
+      );
+      return;
     } else {
-      const languageShowEmbed = this.embed
-        .setDescription(
-          message.translate("languageShow", this.bot.Translator.getLanguageName(message.data.user.language)!)
-        )
-        .setTitle("**Language:** " + message.author.tag);
-
-      await message.send(languageShowEmbed, true, this.docsButton("languages"));
+      await message.send(
+        {
+          ...this.embed,
+          description: message.translate(
+            "languageShow",
+            this.bot.Translator.getLanguageName(message.data.user.language)!
+          ),
+          title: "**Language:** " + message.user.username + "#" + message.user.discriminator,
+        },
+        true,
+        this.docsButton("languages")
+      );
       return;
     }
   }

@@ -1,5 +1,4 @@
-import { Bot, Command, CommandArgs, CommandMessage } from "@eazyautodelete/core";
-import { MessageButton } from "discord.js";
+import { Bot, Command, CommandMessageArgs, CommandMessage } from "@eazyautodelete/core";
 
 class InviteCommand extends Command {
   constructor(bot: Bot) {
@@ -12,21 +11,23 @@ class InviteCommand extends Command {
     this.usage = "invite";
   }
 
-  async run(message: CommandMessage, args: CommandArgs) {
+  async run(message: CommandMessage, args: CommandMessageArgs) {
     message.send(
-      this.embed
-        .setTitle(":link: Invite")
-        .setDescription(message.translate("invite", "https://eazyautodelete.xyz/invite")),
+      {
+        ...this.embed,
+        title: ":link: Invite",
+        description: message.translate("invite", "https://eazyautodelete.xyz/invite"),
+      },
       true,
-      this.urlButton("https://eazyautodelete.xyz/invite", "Invite").addComponents(
-        new MessageButton({
-          label: "Support",
-          type: "BUTTON",
-          style: "LINK",
-          emoji: "❓",
-          url: "https://eazyautodelete.xyz/discord",
-        })
-      )
+      [
+        {
+          type: 1,
+          components: [
+            this.urlButton("https://eazyautodelete.xyz/invite", "Invite")[0].components[0],
+            this.urlButton("https://eazyautodelete.xyz/discord", "Support", "❓")[0].components[0],
+          ],
+        },
+      ]
     );
   }
 }
