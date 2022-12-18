@@ -4,10 +4,9 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [1.2.8](https://github.com/EazyAutodelete/misc-commands/compare/v1.2.7...v1.2.8) (2022-12-18)
 
-
 ### Bug Fixes
 
-* **info:** add bot version again ([cb42934](https://github.com/EazyAutodelete/misc-commands/commit/cb429348ebbe80e1a93634137bdaf085bbf7aa13))
+- **info:** add bot version again ([cb42934](https://github.com/EazyAutodelete/misc-commands/commit/cb429348ebbe80e1a93634137bdaf085bbf7aa13))
 
 ### [1.2.7](https://github.com/EazyAutodelete/misc-commands/compare/v1.2.6...v1.2.7) (2022-12-18)
 

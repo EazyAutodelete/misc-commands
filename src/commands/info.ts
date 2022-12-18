@@ -42,7 +42,7 @@ class InfoCommand extends Command {
       },
       {
         name: ":hourglass: Uptime",
-        value: "```" + msToDuration(this.bot.client.uptime!).toString() + "```",
+        value: "```" + msToDuration(this.bot.client.uptime > 1000 ? this.bot.client.uptime : 1000).toString() + "```",
         inline: false,
       },
       {
