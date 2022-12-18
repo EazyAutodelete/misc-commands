@@ -1,13 +1,14 @@
 {
   "name": "@eazyautodelete/misc-commands",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "🌌 Misc commands",
   "main": "src/MiscCommands.js",
   "scripts": {
     "format": "npx prettier --write .",
     "build": "tsc",
-    "module:build": "tsc src/**.ts src/commands/**.ts --skipLibCheck true --skipDefaultLibCheck true",
-    "postinstall": "npm run module:build"
+    "module:build": "tsc",
+    "postinstall": "npm run module:build",
+    "postpublish": "git push --follow-tags origin main"
   },
   "repository": {
     "type": "git",
@@ -19,8 +20,6 @@
     "url": "https://qreepex.xyz"
   },
   "files": [
-    "src/*.js",
-    "src/**/*.js",
     "src/*.ts",
     "src/**/*.ts",
     "src/*.txt",

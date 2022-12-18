@@ -12,9 +12,8 @@ class InviteCommand extends Command {
   }
 
   async run(message: CommandMessage, args: CommandMessageArgs) {
-    const ping = await message.send({ ...this.embed, description: "Pinging..." }, true);
-    await ping.edit({
-      embeds: [
+    await message.send(
+      [
         {
           ...this.embed,
           footer: {
@@ -38,7 +37,8 @@ class InviteCommand extends Command {
           ],
         },
       ],
-    });
+      true
+    );
   }
 }
 
