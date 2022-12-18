@@ -4,10 +4,9 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [1.2.3](https://github.com/EazyAutodelete/misc-commands/compare/v1.2.2...v1.2.3) (2022-12-18)
 
-
 ### Bug Fixes
 
-* **info:** fix urls in buttons ([81dd70f](https://github.com/EazyAutodelete/misc-commands/commit/81dd70f8da82fa11f7416724d660dee9a964fd66))
+- **info:** fix urls in buttons ([81dd70f](https://github.com/EazyAutodelete/misc-commands/commit/81dd70f8da82fa11f7416724d660dee9a964fd66))
 
 ### [1.2.2](https://github.com/EazyAutodelete/misc-commands/compare/v1.2.0...v1.2.2) (2022-12-18)
 

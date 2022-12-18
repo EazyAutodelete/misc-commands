@@ -25,6 +25,10 @@ class InfoCommand extends Command {
       },
     };
 
+    const data: { status: string; id: number; cluster: number }[][] = await this.bot.cluster.broadcastEval(
+      "this.shards.map(x => { return { status: x.status, id: x.id, cluster: this.cluster.id } })"
+    );
+
     infoEmbed.fields = [
       {
         name: ":alarm_clock: Online since",
@@ -58,12 +62,28 @@ class InfoCommand extends Command {
       },
       {
         name: ":computer: Shards",
-        value: `\`\`\`\nOn this cluster: ${this.client.shards.size}   Online: ${
-          this.client.shards.filter(x => x.status === "ready" || x.status === "resuming").length
-        }   Offline: ${
-          this.client.shards.size -
-          this.client.shards.filter(x => x.status === "ready" || x.status === "resuming").length
-        }\`\`\``,
+        value:
+          `\`\`\`\n` +
+          `On this cluster: ${this.client.shards.size}` +
+          `   ` +
+          `Online: ${this.client.shards.filter(x => x.status === "ready" || x.status === "resuming").length}` +
+          `   ` +
+          `Offline: ${
+            this.client.shards.size -
+            this.client.shards.filter(x => x.status === "ready" || x.status === "resuming").length
+          }` +
+          `\n` +
+          `Total: ${data.map(x => x.length).reduce((a, b) => a + b, 0)}` +
+          `   ` +
+          `Online: ${data.map(x => x.filter(y => y.status === "ready").length).reduce((a, b) => a + b, 0)}` +
+          `   ` +
+          `Offline: ${
+            data.map(x => x.length).reduce((a, b) => a + b, 0) -
+            data
+              .map(x => x.filter(y => y.status === "ready" || y.status === "resuming").length)
+              .reduce((a, b) => a + b, 0)
+          }` +
+          `\`\`\``,
         inline: false,
       },
       {
