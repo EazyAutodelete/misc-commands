@@ -93,6 +93,11 @@ class InfoCommand extends Command {
         inline: false,
       },
       {
+        name: ":page_facing_up: Bot Version",
+        value: `\`\`\`v${process.argv.find(x => x.startsWith("--botversion"))?.split("=")?.[1]}\`\`\``,
+        inline: true,
+      },
+      {
         name: "<:nodejs:1026099632390017154> Node Version",
         value: "```" + process.version + "```",
         inline: true,
