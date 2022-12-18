@@ -20,7 +20,7 @@ class InfoCommand extends Command {
       title: this.bot.client.user?.username + " Information",
       description: message.translate("botinfo"),
       footer: {
-        text: this.bot.client.user?.username + " | Cluster #" + this.bot.cluster.id + " Shard #" + this.bot.shardId,
+        text: this.bot.client.user?.username + " | Cluster #" + this.bot.cluster.id,
         icon_url: this.bot.client.user?.avatarURL,
       },
     };
@@ -108,10 +108,10 @@ class InfoCommand extends Command {
       {
         type: 1,
         components: [
-          this.urlButton("Invite", "https://eazyautodelete.xyz/invite", "🔗")[0].components[0],
-          this.urlButton("Website", "https://eazyautodelete.xyz", "🌐")[0].components[0],
-          this.urlButton("Status Page", "https://status.eazyautodelete.xyz", "📣")[0].components[0],
-          this.urlButton("Documentation", "https://docs.eazyautodelete.xyz", "📖")[0].components[0],
+          this.urlButton("https://eazyautodelete.xyz/invite", "Invite", "🔗")[0].components[0],
+          this.urlButton("https://eazyautodelete.xyz", "Website", "🌐")[0].components[0],
+          this.urlButton("https://status.eazyautodelete.xyz", "Status Page", "📣")[0].components[0],
+          this.urlButton("https://docs.eazyautodelete.xyz", "Documentation", "📖")[0].components[0],
         ],
       },
     ];

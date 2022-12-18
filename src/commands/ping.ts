@@ -17,7 +17,7 @@ class InviteCommand extends Command {
         {
           ...this.embed,
           footer: {
-            text: `Shard #${this.bot.shardId} • Cluster #${this.bot.cluster.id}`,
+            text: `Cluster #${this.bot.cluster.id}`,
           },
           title: ":ping_pong: Pong!",
           fields: [
