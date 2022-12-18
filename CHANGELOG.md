@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.7](https://github.com/EazyAutodelete/misc-commands/compare/v1.2.6...v1.2.7) (2022-12-18)
+
+
+### Bug Fixes
+
+* **botversion:** remove bot version ([6c82eda](https://github.com/EazyAutodelete/misc-commands/commit/6c82edaa30f2b295f2bc9b37aa1fdb4bf7426074))
+
 ### [1.2.6](https://github.com/EazyAutodelete/misc-commands/compare/v1.2.5...v1.2.6) (2022-12-18)
 
 ### Bug Fixes
