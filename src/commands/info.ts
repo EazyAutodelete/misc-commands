@@ -123,9 +123,9 @@ class InfoCommand extends Command {
         inline: true,
       },
       {
-        name: "Image Credits & Special Thanks",
+        name: "Special Thanks to",
         value:
-          "[Icons Server](https://discord.gg/aPvvhefmt3) | [Google Fonts](https://fonts.google.com/icons) | [Discord](https://discord.com/) | [Weblate](https://weblate.org/) | [Gitbook](https://gitbook.com/) | [Directus](https://directus.io/) | [Eris](https://abal.moe/Eris)",
+          "[Weblate](https://weblate.org/) | [Gitbook](https://gitbook.com/) | [Directus](https://directus.io/) | [Eris](https://abal.moe/Eris) | [LaStrix](https://lastrix.de)",
         inline: false,
       },
     ];
