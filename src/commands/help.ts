@@ -1,6 +1,7 @@
 import { Bot, Command, CommandMessageArgs, CommandMessage } from "@eazyautodelete/core";
 
 class HelpCommand extends Command {
+  commandIds: Record<string, string>;
   constructor(bot: Bot) {
     super(bot);
     this.name = "help";
@@ -18,10 +19,19 @@ class HelpCommand extends Command {
         required: false,
       },
     ];
+
+    this.commandIds = {};
   }
 
   async run(message: CommandMessage, args: CommandMessageArgs): Promise<void> {
     const commandName = args.consume("command");
+
+    if (Object.keys(this.commandIds).length == 0) {
+      const commands = await this.bot.client.getCommands();
+      for (const command of commands) {
+        this.commandIds[command.name] = command.id;
+      }
+    }
 
     if (!commandName) {
       await message.send(
@@ -34,12 +44,7 @@ class HelpCommand extends Command {
               await Promise.all(
                 this.bot.commands
                   .filter((c: Command) => c.permissionLevel != "botMod" && c.permissionLevel != "botAdmin")
-                  .map(
-                    async (x: Command) =>
-                      `</${x.name}:${(await this.client.getCommands()).find(y => y.name === x.name)}>:\n\\↪ ${
-                        x.description
-                      }`
-                  )
+                  .map(async (x: Command) => `</${x.name}:${this.commandIds[x.name]}>:\n\\↪ ${x.description}`)
               )
             ).join("\n\n"),
           title: "**EazyAutodelete:** Help",
