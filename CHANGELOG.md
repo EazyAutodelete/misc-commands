@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.11](https://github.com/EazyAutodelete/misc-commands/compare/v1.2.10...v1.2.11) (2023-01-02)
+
+
+### Bug Fixes
+
+* **help:** make cmds mentionable ([b80b7fe](https://github.com/EazyAutodelete/misc-commands/commit/b80b7fe99c71ce3dc7d48cb9e1f0007ac74ebd45))
+
 ### [1.2.10](https://github.com/EazyAutodelete/misc-commands/compare/v1.2.9...v1.2.10) (2023-01-02)
 
 ### Bug Fixes
