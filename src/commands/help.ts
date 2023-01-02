@@ -30,10 +30,18 @@ class HelpCommand extends Command {
           description:
             message.translate("overview") +
             "\n\n" +
-            this.bot.commands
-              .filter((c: Command) => c.permissionLevel != "botMod" && c.permissionLevel != "botAdmin")
-              .map(async (x: Command) => `</${x.name}:${(await this.client.getCommands()).find(y => y.name === x.name)}>:\n\\↪ ${x.description}`)
-              .join("\n\n"),
+            (
+              await Promise.all(
+                this.bot.commands
+                  .filter((c: Command) => c.permissionLevel != "botMod" && c.permissionLevel != "botAdmin")
+                  .map(
+                    async (x: Command) =>
+                      `</${x.name}:${(await this.client.getCommands()).find(y => y.name === x.name)}>:\n\\↪ ${
+                        x.description
+                      }`
+                  )
+              )
+            ).join("\n\n"),
           title: "**EazyAutodelete:** Help",
         },
         true,
