@@ -4,10 +4,9 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [1.2.10](https://github.com/EazyAutodelete/misc-commands/compare/v1.2.9...v1.2.10) (2023-01-02)
 
-
 ### Bug Fixes
 
-* **info:** fix some links ([8f13403](https://github.com/EazyAutodelete/misc-commands/commit/8f13403deb334c57bc7bc2361547488c69aab2e0))
+- **info:** fix some links ([8f13403](https://github.com/EazyAutodelete/misc-commands/commit/8f13403deb334c57bc7bc2361547488c69aab2e0))
 
 ### [1.2.9](https://github.com/EazyAutodelete/misc-commands/compare/v1.2.8...v1.2.9) (2022-12-18)
 

@@ -32,7 +32,7 @@ class HelpCommand extends Command {
             "\n\n" +
             this.bot.commands
               .filter((c: Command) => c.permissionLevel != "botMod" && c.permissionLevel != "botAdmin")
-              .map((x: Command) => `**/${x.name}**:\n\\↪ ${x.description}`)
+              .map(async (x: Command) => `</${x.name}:${(await this.client.getCommands()).find(y => y.name === x.name)}>:\n\\↪ ${x.description}`)
               .join("\n\n"),
           title: "**EazyAutodelete:** Help",
         },
