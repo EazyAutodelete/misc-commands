@@ -25,8 +25,18 @@ class InfoCommand extends Command {
       },
     };
 
+    const startShardData = Date.now();
     const shardData: { status: string; id: number; cluster: number }[][] = await this.bot.cluster.broadcastEval(
       "this.shards.map(x => { return { status: x.status, id: x.id, cluster: this.cluster.id } })"
+    );
+
+    const serverCount = (await this.bot.cluster.fetchClientValues("guilds.size")).reduce((a, b) => a + b, 0);
+
+    const membersCount = (await this.bot.cluster.fetchClientValues("users.size")).reduce((a, b) => a + b, 0);
+
+    const channelsCount = (await this.bot.cluster.broadcastEval("Object.keys(this.channelGuildMap).length")).reduce(
+      (a, b) => a + b,
+      0
     );
 
     infoEmbed.fields = [
@@ -47,23 +57,17 @@ class InfoCommand extends Command {
       },
       {
         name: ":tools: Servers",
-        value: "```" + (await this.bot.cluster.fetchClientValues("guilds.size")).reduce((a, b) => a + b, 0) + "```",
+        value: "```" + serverCount + "```",
         inline: true,
       },
       {
         name: ":busts_in_silhouette: Members",
-        value: "```" + (await this.bot.cluster.fetchClientValues("users.size")).reduce((a, b) => a + b, 0) + "```",
+        value: "```" + membersCount + "```",
         inline: true,
       },
       {
         name: "<:channel:1026072967794413580> Channels",
-        value:
-          "```" +
-          (await this.bot.cluster.broadcastEval("Object.keys(this.channelGuildMap).length")).reduce(
-            (a, b) => a + b,
-            0
-          ) +
-          "```",
+        value: "```" + channelsCount + "```",
         inline: true,
       },
       {
