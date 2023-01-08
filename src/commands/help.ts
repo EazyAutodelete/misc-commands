@@ -67,7 +67,7 @@ class HelpCommand extends Command {
     } else if (commandName) {
       const command = this.bot.commands.get(commandName);
       if (!command) {
-        message.error("error.commandNotFound");
+        message.error("commandNotFound");
         return;
       }
 

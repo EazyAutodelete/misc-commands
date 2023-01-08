@@ -41,8 +41,8 @@
     "prettier": "^2.7.1"
   },
   "dependencies": {
-    "@eazyautodelete/commands-support": "^1.4.15",
-    "@eazyautodelete/core": "^4.1.11",
+    "@eazyautodelete/commands-support": "^1.4.23",
+    "@eazyautodelete/core": "^4.1.44",
     "eris": "github:EazyAutodelete/eris",
     "typescript": "^4.8.3"
   },

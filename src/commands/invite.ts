@@ -16,7 +16,18 @@ class InviteCommand extends Command {
       {
         ...this.embed,
         title: ":link: Invite",
-        description: message.translate("invite", "https://eazyautodelete.xyz/invite"),
+        description:
+          message.translate("invite", "https://eazyautodelete.xyz/invite") +
+          `\n\n` +
+          message.translate("vote") +
+          `\n` +
+          `[Top.GG](https://top.gg/bot/746453621821931634)` +
+          ` • ` +
+          `[DiscordBotList.com](https://discordbotlist.com/bots/eazyautodelete)` +
+          ` • ` +
+          `[DiscordList.gg](https://discordlist.gg/bot/746453621821931634)` +
+          ` • ` +
+          `[Discords.com](https://discords.com/bots/bot/746453621821931634)`,
       },
       true,
       [
