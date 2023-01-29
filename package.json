@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "@eazyautodelete/commands-support": "^1.4.23",
-    "@eazyautodelete/core": "^4.1.44",
+    "@eazyautodelete/core": "^4.1.46",
     "eris": "github:EazyAutodelete/eris",
     "typescript": "^4.8.3"
   },

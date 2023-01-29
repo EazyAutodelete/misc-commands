@@ -17,6 +17,7 @@ class HelpCommand extends Command {
         type: 3,
         description: "The command you want to get help for",
         required: false,
+        autocomplete: true,
       },
     ];
 
@@ -67,7 +68,7 @@ class HelpCommand extends Command {
     } else if (commandName) {
       const command = this.bot.commands.get(commandName);
       if (!command) {
-        message.error("commandNotFound");
+        message.error("commandNotFound", commandName);
         return;
       }
 
