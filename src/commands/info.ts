@@ -30,12 +30,12 @@ class InfoCommand extends Command {
       "this.shards.map(x => { return { status: x.status, id: x.id, cluster: this.cluster.id } })"
     );
 
-    const serverCount = (await this.bot.cluster.fetchClientValues("guilds.size")).reduce((a, b) => a + b, 0);
+    const serverCount = (await this.bot.cluster.fetchClientValues("guilds.size")).reduce((a: any, b: any) => a + b, 0);
 
-    const membersCount = (await this.bot.cluster.fetchClientValues("users.size")).reduce((a, b) => a + b, 0);
+    const membersCount = (await this.bot.cluster.fetchClientValues("users.size")).reduce((a: any, b: any) => a + b, 0);
 
     const channelsCount = (await this.bot.cluster.broadcastEval("Object.keys(this.channelGuildMap).length")).reduce(
-      (a, b) => a + b,
+      (a: any, b: any) => a + b,
       0
     );
 
