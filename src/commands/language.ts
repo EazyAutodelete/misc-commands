@@ -43,8 +43,10 @@ class LanguageCommand extends Command {
       }
 
       const data = await this.bot.db.updateUserSettings(message.user.id, {
-        lang: language,
+        language,
       });
+
+      if (!data) return void (await message.error("error.invalidLanguage"));
 
       message.data.user.language = data.language;
 
