@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.19](https://github.com/EazyAutodelete/misc-commands/compare/v1.2.17...v1.2.19) (2023-06-06)
+
+
+### Bug Fixes
+
+* **language:** support new db client ([2170496](https://github.com/EazyAutodelete/misc-commands/commit/21704969db8b78f6090bd513dd5679ce5a964408))
+
 ### [1.2.17](https://github.com/EazyAutodelete/misc-commands/compare/v1.2.16...v1.2.17) (2023-02-28)
 
 
